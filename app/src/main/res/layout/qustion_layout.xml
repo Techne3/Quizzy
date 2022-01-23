@@ -7,8 +7,9 @@
 
     android:layout_height="match_parent">
 
+
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/scoreBoard"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#9C27B0"
@@ -20,26 +21,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.472"
-
-        />
-
+       />
 
     <TextView
         android:id="@+id/questionTv"
         android:layout_width="377dp"
         android:layout_height="188dp"
-        android:layout_marginTop="76dp"
         android:gravity="center"
-        android:text="This is what a question would look like if
-        This is what a question would look like if
-    This is what a question would look like if
-"
+        android:text=""
         android:textAlignment="center"
         android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/scoreBoard"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="204dp" />
 
     <Button
         android:id="@+id/answer1"
@@ -105,7 +101,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:backgroundTint="#9C27B0"
-        android:text="Next"
+        android:text="Start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
