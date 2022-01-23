@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.quizzy.databinding.QustionLayoutBinding
 
 class QuestionsFragment :Fragment() {
@@ -15,10 +16,10 @@ class QuestionsFragment :Fragment() {
 
 
 
-
-
     private var _binding: QustionLayoutBinding? = null
     private val binding: QustionLayoutBinding get() = _binding!!
+
+    private lateinit var viewModel : ViewModelHolder
 
 
 
@@ -32,18 +33,15 @@ class QuestionsFragment :Fragment() {
     }
 
 
-//      val tvMyTextView = findViewById<TextView>(R.id.textView)
-
-
-
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(requireActivity())[ViewModelHolder::class.java]
         with(binding) {
             var correct = 0
             var questionNumber = 0
-            var bundle = Bundle()
+            var bundle = Bundle(correct)
 
 
             fun quiz(){
@@ -56,9 +54,7 @@ class QuestionsFragment :Fragment() {
 
 
 
-
-
-                if(questionNumber  > 3){
+                if(questionNumber  >= 3){
                     parentFragmentManager.beginTransaction()
                         .replace(R.id.fragment_container_view, ResultsFragment::class.java, bundle)
                         .addToBackStack(null)
@@ -69,15 +65,14 @@ class QuestionsFragment :Fragment() {
 
 
 
-            val Questions = arrayListOf<String>("What is the value of pie?", "What is this shit","What is this place")
+            val Questions = arrayListOf<String>("What is the value of pie?", "How much money do you give the Lock Ness Monster?","What is this place")
+            val AnswerKey = arrayListOf<String>("3.14", "3.50","hows it going")
 
-            val AnswerKey = arrayListOf<String>("3.14", "No one knows","hows it going")
 
-
-            val choice0 = arrayListOf<String>("3.14","what is going on here","7")
-            val choice1 = arrayListOf<String>("3.24","No one knows","7")
-            val choice2 = arrayListOf<String>("3.23","your on question 2","hows it going")
-            val choice3 = arrayListOf<String>("3.244443","Hooora","3")
+            val choice0 = arrayListOf<String>("3.14","100","7")
+            val choice1 = arrayListOf<String>("3.24","90","7")
+            val choice2 = arrayListOf<String>("3.23","666","hows it going")
+            val choice3 = arrayListOf<String>("3.244443","3.50","3")
 
 
             nextBtn.setOnClickListener{
@@ -97,13 +92,13 @@ class QuestionsFragment :Fragment() {
 
 
 
-       answer1.setOnClickListener {
+                answer1.setOnClickListener {
 
-           if ("${AnswerKey[questionNumber-1]}" === "${choice0[questionNumber -1]}") {
-               correct++
-               answer1.setBackgroundColor(Color.GREEN)
-           }
-       }
+                   if ("${AnswerKey[questionNumber-1]}" === "${choice0[questionNumber -1]}") {
+                       correct++
+                       answer1.setBackgroundColor(Color.GREEN)
+                   }
+               }
                 answer2.setOnClickListener {
 
                     if ("${AnswerKey[questionNumber - 1]}" === "${choice1[questionNumber - 1]}") {
@@ -129,14 +124,12 @@ class QuestionsFragment :Fragment() {
 
                 }
 
+                viewModel.getCorrect(correct)
+
             }
 
         }
     }
-
-
-
-
 
 
 

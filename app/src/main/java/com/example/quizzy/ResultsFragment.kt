@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.quizzy.databinding.ResultsBinding
 import com.example.quizzy.databinding.WelcomeBinding
 
@@ -14,6 +15,8 @@ class ResultsFragment  :Fragment() {
 
     private var _binding: ResultsBinding? = null
     private val binding: ResultsBinding get() = _binding!!
+
+    private lateinit var viewModel: ViewModelHolder
 
 
 
@@ -29,8 +32,13 @@ class ResultsFragment  :Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(requireActivity())[ViewModelHolder::class.java]
         with(binding) {
 
+            viewModel.correctNum.observe(viewLifecycleOwner){ correct ->
+
+                resultsTV.text = correct.toString()
+            }
 
             backBtn.setOnClickListener{
 
