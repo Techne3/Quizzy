@@ -39,13 +39,14 @@ class QuestionsFragment :Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity())[ViewModelHolder::class.java]
         with(binding) {
+
+
             var correct = 0
             var questionNumber = 0
-            var bundle = Bundle(correct)
+            val bundle = Bundle(correct)
 
 
             fun quiz(){
-
 
 
                 questionNumber++
@@ -53,6 +54,11 @@ class QuestionsFragment :Fragment() {
                 answer2.setBackgroundColor (Color.parseColor("#2196F3"))
                 answer3.setBackgroundColor (Color.parseColor("#2196F3"))
                 answer4.setBackgroundColor (Color.parseColor("#2196F3"))
+
+                answer1.setEnabled(true);
+                answer2.setEnabled(true);
+                answer3.setEnabled(true);
+                answer4.setEnabled(true);
 
 
 
@@ -85,44 +91,52 @@ class QuestionsFragment :Fragment() {
              nextBtn.text = "Next Question"
 
             scoreBoard.text = "Question: $questionNumber correct $correct"
-            questionTv.text ="${Questions[questionNumber-1]}"
+            questionTv.text = Questions[questionNumber-1]
 
-                answer1.text = "${choice0[questionNumber - 1]}"
-                answer2.text = "${choice1[questionNumber-1]}"
-                answer3.text = "${choice2[questionNumber-1]}"
-                answer4.text = "${choice3[questionNumber-1]}"
+                answer1.text = choice0[questionNumber - 1]
+                answer2.text = choice1[questionNumber-1]
+                answer3.text = choice2[questionNumber-1]
+                answer4.text = choice3[questionNumber-1]
 
 
 
 
                 answer1.setOnClickListener {
 
-                   if ("${AnswerKey[questionNumber-1]}" === "${choice0[questionNumber -1]}") {
+                   if (AnswerKey[questionNumber-1] === choice0[questionNumber -1]) {
                        correct++
                        answer1.setBackgroundColor(Color.GREEN)
+                   }else{
+                       answer1.setEnabled(false);
                    }
                }
                 answer2.setOnClickListener {
 
-                    if ("${AnswerKey[questionNumber - 1]}" === "${choice1[questionNumber - 1]}") {
+                    if (AnswerKey[questionNumber - 1] === choice1[questionNumber - 1]) {
                         correct++
                         answer2.setBackgroundColor(Color.GREEN)
+                    }else{
+                        answer2.setEnabled(false);
                     }
 
                 }
                 answer3.setOnClickListener {
 
-                    if ("${AnswerKey[questionNumber - 1]}" === "${choice2[questionNumber - 1]}") {
+                    if (AnswerKey[questionNumber - 1] === choice2[questionNumber - 1]) {
                         correct++
                         answer3.setBackgroundColor(Color.GREEN)
+                    }else{
+                        answer3.setEnabled(false);
                     }
 
                 }
                 answer4.setOnClickListener {
 
-                    if ("${AnswerKey[questionNumber - 1]}" === "${choice3[questionNumber - 1]}") {
+                    if (AnswerKey[questionNumber - 1] === choice3[questionNumber - 1]) {
                         correct++
                         answer4.setBackgroundColor(Color.GREEN)
+                    }else{
+                        answer4.setEnabled(false);
                     }
 
                 }
