@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.quizzy.databinding.QustionLayoutBinding
@@ -43,6 +42,7 @@ class QuestionsFragment :Fragment() {
 
             var correct = 0
             var questionNumber = 0
+            var incorrectAns =0
             val bundle = Bundle(correct)
 
 
@@ -106,8 +106,17 @@ class QuestionsFragment :Fragment() {
                    if (AnswerKey[questionNumber-1] === choice0[questionNumber -1]) {
                        correct++
                        answer1.setBackgroundColor(Color.GREEN)
+                       answer1.isEnabled = false;
+                       answer2.isEnabled =false;
+                       answer3.isEnabled =false;
+                       answer4.isEnabled =false;
                    }else{
-                       answer1.setEnabled(false);
+                       answer1.setBackgroundColor(Color.RED)
+                       answer1.isEnabled = false;
+                       answer2.isEnabled =false;
+                       answer3.isEnabled =false;
+                       answer4.isEnabled =false;
+                       incorrectAns++
                    }
                }
                 answer2.setOnClickListener {
@@ -115,8 +124,17 @@ class QuestionsFragment :Fragment() {
                     if (AnswerKey[questionNumber - 1] === choice1[questionNumber - 1]) {
                         correct++
                         answer2.setBackgroundColor(Color.GREEN)
+                        answer1.isEnabled = false;
+                        answer2.isEnabled =false;
+                        answer3.isEnabled =false;
+                        answer4.isEnabled =false;
                     }else{
-                        answer2.setEnabled(false);
+                        answer2.setBackgroundColor(Color.RED)
+                        answer1.isEnabled = false;
+                        answer2.isEnabled =false;
+                        answer3.isEnabled =false;
+                        answer4.isEnabled =false;
+                        incorrectAns++
                     }
 
                 }
@@ -125,8 +143,17 @@ class QuestionsFragment :Fragment() {
                     if (AnswerKey[questionNumber - 1] === choice2[questionNumber - 1]) {
                         correct++
                         answer3.setBackgroundColor(Color.GREEN)
+                        answer1.isEnabled = false;
+                        answer2.isEnabled =false;
+                        answer3.isEnabled =false;
+                        answer4.isEnabled =false;
                     }else{
-                        answer3.setEnabled(false);
+                        answer3.setBackgroundColor(Color.RED)
+                        answer1.isEnabled = false;
+                        answer2.isEnabled =false;
+                        answer3.isEnabled =false;
+                        answer4.isEnabled =false;
+                        incorrectAns++
                     }
 
                 }
@@ -135,8 +162,17 @@ class QuestionsFragment :Fragment() {
                     if (AnswerKey[questionNumber - 1] === choice3[questionNumber - 1]) {
                         correct++
                         answer4.setBackgroundColor(Color.GREEN)
+                        answer1.isEnabled = false;
+                        answer2.isEnabled =false;
+                        answer3.isEnabled =false;
+                        answer4.isEnabled =false;
                     }else{
-                        answer4.setEnabled(false);
+                        answer4.setBackgroundColor(Color.RED)
+                        answer1.isEnabled = false;
+                        answer2.isEnabled =false;
+                        answer3.isEnabled =false;
+                        answer4.isEnabled =false;
+                        incorrectAns++
                     }
 
                 }

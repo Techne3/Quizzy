@@ -39,9 +39,11 @@ class ResultsFragment  :Fragment() {
 
             viewModel.correctNum.observe(viewLifecycleOwner){ correct ->
 
-                 resultsTV.text = "Congrats you got ${correct.toString()} Correct. Play Again?"
+                 resultsTV.text = "Congrats you got ${correct.toString()} / 4 Correct"
 
             }
+
+
 
             backBtn.setOnClickListener{
 
