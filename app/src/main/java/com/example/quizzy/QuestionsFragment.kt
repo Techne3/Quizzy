@@ -45,6 +45,9 @@ class QuestionsFragment :Fragment() {
 
 
             fun quiz(){
+
+
+
                 questionNumber++
                 answer1.setBackgroundColor (Color.parseColor("#2196F3"))
                 answer2.setBackgroundColor (Color.parseColor("#2196F3"))
@@ -54,7 +57,7 @@ class QuestionsFragment :Fragment() {
 
 
 
-                if(questionNumber  >= 3){
+                if( questionNumber >= 5){
                     parentFragmentManager.beginTransaction()
                         .replace(R.id.fragment_container_view, ResultsFragment::class.java, bundle)
                         .addToBackStack(null)
@@ -65,14 +68,14 @@ class QuestionsFragment :Fragment() {
 
 
 
-            val Questions = arrayListOf<String>("What is the value of pie?", "How much money do you give the Lock Ness Monster?","What is this place")
-            val AnswerKey = arrayListOf<String>("3.14", "3.50","hows it going")
+            val Questions = arrayListOf<String>("What is the value of pie?", "How much money do you give the Lock Ness Monster?","What is the best Programming language","What year was the Moon landing?","How's it going?", "Do we live in the Matrix?")
+            val AnswerKey = arrayListOf<String>("3.14", "3.50","Kotlin","1969","Stupendous","Yes")
 
 
-            val choice0 = arrayListOf<String>("3.14","100","7")
-            val choice1 = arrayListOf<String>("3.24","90","7")
-            val choice2 = arrayListOf<String>("3.23","666","hows it going")
-            val choice3 = arrayListOf<String>("3.244443","3.50","3")
+            val choice0 = arrayListOf<String>("3.14","100","JavaScript","1960","Great","Yes")
+            val choice1 = arrayListOf<String>("3.24","90","Java","1959","Fine","Yes")
+            val choice2 = arrayListOf<String>("3.23","666","Kotlin","1972","Stupendous","Yes")
+            val choice3 = arrayListOf<String>("3.244443","3.50","Python","1969","Wonderful","Yes")
 
 
             nextBtn.setOnClickListener{

@@ -1,5 +1,6 @@
 package com.example.quizzy
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -30,6 +31,7 @@ class ResultsFragment  :Fragment() {
     }
 
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity())[ViewModelHolder::class.java]
@@ -37,7 +39,8 @@ class ResultsFragment  :Fragment() {
 
             viewModel.correctNum.observe(viewLifecycleOwner){ correct ->
 
-                resultsTV.text = correct.toString()
+                 resultsTV.text = "Congrats you got ${correct.toString()} Correct. Play Again?"
+
             }
 
             backBtn.setOnClickListener{
