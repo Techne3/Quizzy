@@ -42,7 +42,6 @@ class QuestionsFragment :Fragment() {
 
             var correct = 0
             var questionNumber = 0
-            var incorrectAns =0
             val bundle = Bundle(correct)
 
 
@@ -116,7 +115,6 @@ class QuestionsFragment :Fragment() {
                        answer2.isEnabled =false;
                        answer3.isEnabled =false;
                        answer4.isEnabled =false;
-                       incorrectAns++
                    }
                }
                 answer2.setOnClickListener {
@@ -134,7 +132,6 @@ class QuestionsFragment :Fragment() {
                         answer2.isEnabled =false;
                         answer3.isEnabled =false;
                         answer4.isEnabled =false;
-                        incorrectAns++
                     }
 
                 }
@@ -153,7 +150,9 @@ class QuestionsFragment :Fragment() {
                         answer2.isEnabled =false;
                         answer3.isEnabled =false;
                         answer4.isEnabled =false;
-                        incorrectAns++
+
+
+
                     }
 
                 }
@@ -172,7 +171,6 @@ class QuestionsFragment :Fragment() {
                         answer2.isEnabled =false;
                         answer3.isEnabled =false;
                         answer4.isEnabled =false;
-                        incorrectAns++
                     }
 
                 }
